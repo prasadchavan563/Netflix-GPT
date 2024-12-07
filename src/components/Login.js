@@ -3,12 +3,14 @@ import Header from "./Header"
 import validateData from "../utils/ValidateData"
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true)
     const [errorMessage, setErrorMessage] = useState(null)
     const email = useRef(null)
     const password = useRef(null)
+    const navigate=useNavigate()
 
     console.log(email, password);
 
@@ -34,6 +36,7 @@ const Login = () => {
                     // Signed up 
                     const user = userCredential.user;
                     console.log(user);
+                    navigate('/browse')
 
                     // ...
                 })
@@ -41,6 +44,7 @@ const Login = () => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     setErrorMessage(errorCode + '-' + errorMessage)
+
                     // ..
                 });
         }
@@ -50,6 +54,7 @@ const Login = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user);
+                    navigate('/browse')
                     
                 })
                 .catch((error) => {

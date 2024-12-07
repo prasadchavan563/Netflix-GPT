@@ -8,6 +8,8 @@
 - Firebase setup
 - Deploying app for production
 - Create Sign Up user Account
+- Implement Sign In user API
+- Created User store with userSlice
 
 
 
